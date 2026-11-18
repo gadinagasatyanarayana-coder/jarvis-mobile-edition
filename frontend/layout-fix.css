@@ -1,5 +1,5 @@
 
-/* KALKI Tools workspace: advanced and everyday panels live here, never on chat. */
+/* JARVIS Tools workspace: advanced and everyday panels live here, never on chat. */
 .tools-view{min-height:calc(100svh - 72px);padding:26px 18px 150px;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
 .tools-view-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;max-width:760px;margin:0 auto 18px;padding:4px 0 16px;border-bottom:1px solid rgba(176,164,255,.18)}
 .tools-view-head h2{margin-top:5px;font-size:clamp(27px,7vw,40px);letter-spacing:-.04em}.tools-view-head p:last-child{margin-top:7px;color:var(--muted);font-size:11px;line-height:1.45}.tools-back{flex:0 0 auto;padding:9px 11px;border:1px solid rgba(176,164,255,.3);border-radius:10px;background:rgba(42,36,76,.5);color:#e8e3ff;font-size:11px}.tools-back:hover{border-color:var(--accent);background:rgba(56,48,101,.65)}

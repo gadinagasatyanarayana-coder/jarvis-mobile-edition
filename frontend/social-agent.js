@@ -1,5 +1,5 @@
 /*
- * KALKI Social Automation Agent: browser-local builder and simulation only.
+ * JARVIS Social Automation Agent: browser-local builder and simulation only.
  * No Instagram/Meta requests, OAuth, webhook listener, message sending, or publish API.
  */
 (() => {

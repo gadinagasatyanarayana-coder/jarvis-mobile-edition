@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#0b0d12">
-  <title>KALKI — Personal AI Assistant</title>
+  <title>JARVIS — Personal AI Assistant</title>
   <link rel="stylesheet" href="style.css?v=gemini-key-settings-1">
   <link rel="stylesheet" href="everyday-tools.css?v=kalki-1">
   <link rel="stylesheet" href="layout-fix.css?v=two-mode-1">
@@ -20,8 +20,8 @@
     <header class="app-header">
       <button class="icon-button menu-button" type="button" aria-label="Open menu">☰</button>
       <div class="brand-lockup">
-        <div class="brand-mark" aria-hidden="true"><img src="1789578396977-559ec457.jpg" alt="KALKI"></div>
-        <div><h1>KALKI</h1><p><span class="status-dot"></span> Voice assistant · talk or type</p></div>
+        <div class="brand-mark" aria-hidden="true"><img src="1789578396977-559ec457.jpg" alt="JARVIS"></div>
+        <div><h1>JARVIS</h1><p><span class="status-dot"></span> Voice assistant · talk or type</p></div>
       </div>
       <button id="clear-btn" class="icon-button" type="button" aria-label="Clear conversation">⌫</button>
     </header>
@@ -31,13 +31,13 @@
         <div class="welcome-orb">✦</div>
         <p class="eyebrow">YOUR AI COMPANION</p>
         <h2>How can I help<br><em>today?</em></h2>
-        <p class="welcome-copy">Talk with KALKI hands-free, or type a message. Tap the microphone to start or stop voice conversation.</p>
+        <p class="welcome-copy">Talk with JARVIS hands-free, or type a message. Tap the microphone to start or stop voice conversation.</p>
         <div class="suggestions" aria-label="Suggestions">
           <button type="button" onclick="document.getElementById('msg').value='Help me plan my day';document.getElementById('msg').focus()">Plan my day <span>→</span></button>
           <button type="button" onclick="document.getElementById('msg').value='Search the web for ';document.getElementById('msg').focus()">Search the web <span>→</span></button>
         </div>
-        <section id="everyday-tools" class="everyday-tools" aria-label="KALKI Everyday Tools">
-          <div class="tools-heading"><strong>KALKI Everyday Tools</strong><small>Tap to prepare a command — nothing runs automatically.</small></div>
+        <section id="everyday-tools" class="everyday-tools" aria-label="JARVIS Everyday Tools">
+          <div class="tools-heading"><strong>JARVIS Everyday Tools</strong><small>Tap to prepare a command — nothing runs automatically.</small></div>
           <div class="tool-grid">
             <button data-tool-command="Tell me the time">🕒 Time</button><button data-tool-command="Tell me a joke">😄 Joke</button><button data-tool-command="Give me motivation">✨ Motivation</button><button data-tool-command="Roll a dice">🎲 Dice</button><button data-tool-command="Flip a coin">🪙 Coin</button><button data-tool-command="Generate a strong password">🔐 Password</button><button data-tool-command="Open YouTube">▶ YouTube</button><button data-tool-command="Open Google">🔎 Google</button>
           </div>
@@ -45,7 +45,7 @@
       </section>
 
       <section id="kalki-share-preview" class="share-preview" hidden aria-label="Shared content preview">
-        <div class="share-preview-head"><strong>SHARED WITH KALKI</strong><button id="share-dismiss" type="button" aria-label="Dismiss shared content">×</button></div>
+        <div class="share-preview-head"><strong>SHARED WITH JARVIS</strong><button id="share-dismiss" type="button" aria-label="Dismiss shared content">×</button></div>
         <p id="share-summary" class="share-summary"></p>
         <div id="share-files" class="share-files"></div>
         <div class="share-actions" role="group" aria-label="Choose a draft action">
@@ -58,13 +58,13 @@
       </section>
       <section id="chat" class="chat" aria-live="polite" aria-label="Conversation"></section>
       <section id="kalki-effects-panel" class="kalki-effects-panel" hidden aria-labelledby="kalki-effects-title">
-        <header class="kalki-effects-panel-head"><div><p class="eyebrow">KALKI · ASSISTANT UI</p><h2 id="kalki-effects-title" tabindex="-1">Visual effects</h2></div><button id="kalki-effects-close" class="kalki-effects-back" type="button">← Back to chat</button></header>
+        <header class="kalki-effects-panel-head"><div><p class="eyebrow">JARVIS · ASSISTANT UI</p><h2 id="kalki-effects-title" tabindex="-1">Visual effects</h2></div><button id="kalki-effects-close" class="kalki-effects-back" type="button">← Back to chat</button></header>
         <p id="kalki-effects-load-error" class="kalki-effects-load-error" role="alert" hidden>The visual effects lab could not be opened. Check your connection, then reopen the panel to try again.</p>
         <p id="kalki-effects-loading" class="kalki-effects-loading" role="status" aria-live="polite" hidden>Loading visual effects…</p>
-        <iframe id="kalki-effects-frame" class="kalki-effects-frame" title="KALKI visual effects lab" loading="lazy" scrolling="no" src="about:blank" data-src="effects/index.html?v=standalone-3" aria-busy="true"></iframe>
+        <iframe id="kalki-effects-frame" class="kalki-effects-frame" title="JARVIS visual effects lab" loading="lazy" scrolling="no" src="about:blank" data-src="effects/index.html?v=standalone-3" aria-busy="true"></iframe>
       </section>
       <section id="creator-agent-panel" class="creator-agent-panel" hidden aria-labelledby="creator-agent-title">
-        <div class="creator-agent-head"><div><p class="eyebrow">KALKI CREATOR AGENT</p><h2 id="creator-agent-title">Short-video studio</h2><p>Prepare a Telugu/Teluglish creator brief in stages. Nothing is rendered, uploaded, or published here.</p></div><span class="creator-safe-badge">EXPLICIT ONLY</span></div>
+        <div class="creator-agent-head"><div><p class="eyebrow">JARVIS CREATOR AGENT</p><h2 id="creator-agent-title">Short-video studio</h2><p>Prepare a Telugu/Teluglish creator brief in stages. Nothing is rendered, uploaded, or published here.</p></div><span class="creator-safe-badge">EXPLICIT ONLY</span></div>
         <div class="creator-stagebar" role="list" aria-label="Creator workflow stages"><span class="is-active" data-creator-stage="brief">1 Brief</span><span data-creator-stage="script">2 Script</span><span data-creator-stage="assets">3 Assets</span><span data-creator-stage="edit">4 Edit plan</span><span data-creator-stage="preview">5 Preview</span><span data-creator-stage="export">6 Export</span></div>
         <form id="creator-agent-form" class="creator-form">
           <label>Topic or keyword<input id="creator-topic" required placeholder="e.g. AI tools for Telugu creators"></label>
@@ -76,7 +76,7 @@
         <section id="creator-output" class="creator-output" hidden aria-live="polite"><div class="creator-output-head"><strong id="creator-output-title">Creator plan</strong><span id="creator-output-state">BRIEF READY</span></div><div id="creator-cards" class="creator-cards"></div><div class="creator-preview"><div><strong>Workflow preview</strong><p id="creator-workflow"></p></div><div class="creator-boundary">No video rendering worker or provider is configured. Asset search terms are planning-only; use original, licensed, or permissioned footage/music.</div></div><div class="creator-approval"><label><input id="creator-approval" type="checkbox"> I explicitly approve exporting this planning package (no upload or publish).</label><button id="creator-export" type="button" disabled>Download plan placeholder</button><button id="creator-reset" type="button" class="creator-secondary">Start over</button></div></section>
       </section>
       <section id="social-agent-panel" class="social-agent-panel" hidden aria-labelledby="social-agent-title">
-        <header class="social-head"><div><p class="eyebrow">KALKI · AGENTS</p><h2 id="social-agent-title">Social Automation Agent</h2><p>Build and test Instagram automation rules privately. This workspace stores drafts and simulation records in this browser only.</p></div><span id="social-agent-connection-state" class="social-pending">INSTAGRAM · PENDING</span></header>
+        <header class="social-head"><div><p class="eyebrow">JARVIS · AGENTS</p><h2 id="social-agent-title">Social Automation Agent</h2><p>Build and test Instagram automation rules privately. This workspace stores drafts and simulation records in this browser only.</p></div><span id="social-agent-connection-state" class="social-pending">INSTAGRAM · PENDING</span></header>
         <p class="social-boundary"><strong>Safe preview mode:</strong> no Meta OAuth is configured, and this agent has no Instagram API, webhook, or send capability. “Start” enables only the local simulator. Every DM remains a draft; confirming approval records consent locally and <strong>never sends or publishes</strong>.</p>
         <div id="social-agent-metrics" class="social-metrics" aria-label="Local preview metrics"></div>
         <section class="social-card" aria-labelledby="social-rule-builder-title"><h3 id="social-rule-builder-title">1 · Automation builder</h3><p>Build the two-step flow: a comment gets one private CTA asking the person to follow and DM the agreed keyword; only that inbound DM can unlock the profile check. Rules are saved paused. A non-empty username allowlist and explicit approval are always required.</p>
@@ -103,34 +103,34 @@
       <div class="composer" role="group" aria-label="Message composer">
         <button id="attach-btn" class="composer-icon" type="button" aria-label="Attach a file" aria-expanded="false">＋</button>
         <input id="img-input" type="file" accept="image/*,.pdf,.txt,.doc,.docx" hidden>
-        <input id="msg" type="text" placeholder="Talk or message KALKI..." autocomplete="off" enterkeyhint="send">
+        <input id="msg" type="text" placeholder="Talk or message JARVIS..." autocomplete="off" enterkeyhint="send">
         <button id="mic-btn" class="composer-icon voice-conversation-toggle" type="button" aria-label="Start voice conversation" title="Start voice conversation" aria-pressed="false">🎙</button>
         <button id="send" class="send-button" type="button" aria-label="Send message">↑</button>
       <div id="attachment-menu" class="attachment-menu" hidden role="menu"><button id="cam-btn" type="button" role="menuitem">📷 Take or choose an image</button><button id="file-btn" type="button" role="menuitem">📎 Choose a file</button></div>
       </div>
-      <p class="safe-note"><span>✦</span> KALKI only takes action when you explicitly ask.</p>
+      <p class="safe-note"><span>✦</span> JARVIS only takes action when you explicitly ask.</p>
       <p id="voice-mode-status" class="voice-mode-status" role="status" aria-live="polite">Tap 🎙 to start a voice conversation. Tap again to stop.</p>
     </div>
   </div>
 
   <aside class="side-sheet" aria-label="Navigation">
     <button class="sheet-close" type="button" aria-label="Close menu">×</button>
-    <p class="eyebrow">KALKI</p><h2>Assistant</h2>
+    <p class="eyebrow">JARVIS</p><h2>Assistant</h2>
     <button class="sheet-link" type="button">＋ New conversation</button>
     <a class="sheet-link" href="connectors.html">◇ Connectors</a>
-    <a class="sheet-link" href="../" target="_blank" rel="noopener noreferrer" aria-label="Open the KALKI product website in a new tab">ⓘ KALKI product site ↗</a>
-    <a class="sheet-link" href="#kalki-effects-panel" id="kalki-effects-link">✧ KALKI Visual Effects</a>
+    <a class="sheet-link" href="../" target="_blank" rel="noopener noreferrer" aria-label="Open the JARVIS product website in a new tab">ⓘ JARVIS product site ↗</a>
+    <a class="sheet-link" href="#kalki-effects-panel" id="kalki-effects-link">✧ JARVIS Visual Effects</a>
     <a class="sheet-link" href="#creator-agent-panel" id="creator-agent-link">✦ Creator Agent</a><a class="sheet-link" href="#social-agent-panel" id="social-agent-link">◎ Social Automation Agent</a><a class="sheet-link" href="#everyday-tools" id="tools-menu-link">⌁ Tools</a><button id="settings-toggle" class="sheet-link" type="button" aria-expanded="false">⚙ Settings</button>
     <section id="voice-settings" class="voice-settings" hidden aria-label="Settings">
       <section class="voice-output-settings" aria-labelledby="tts-settings-title">
-        <div class="voice-setting-heading"><strong id="tts-settings-title">Voice conversation</strong><small>Choose a consistent voice and how KALKI listens.</small></div>
-        <label class="api-key-label" for="tts-voice-select">KALKI speaking voice</label>
+        <div class="voice-setting-heading"><strong id="tts-settings-title">Voice conversation</strong><small>Choose a consistent voice and how JARVIS listens.</small></div>
+        <label class="api-key-label" for="tts-voice-select">JARVIS speaking voice</label>
         <select id="tts-voice-select" class="voice-select" aria-describedby="tts-voice-help"><option value="">Loading voices from this device…</option></select>
         <p id="tts-voice-help" class="voice-setting-status">The chosen browser voice stays on this device. Voice availability depends on your browser.</p>
         <label class="api-key-label" for="voice-input-language">Listening language</label>
         <select id="voice-input-language" class="voice-select"><option value="en-IN">English (India)</option><option value="te-IN">Telugu (India)</option></select>
         <p class="voice-setting-status">Microphone listens only while voice mode is on. Browser speech recognition may use the browser’s own speech service.</p>
-        <label class="kalki-toggle" for="tts-auto-read"><input id="tts-auto-read" type="checkbox"><span>Automatically read KALKI replies aloud in text chat</span></label>
+        <label class="kalki-toggle" for="tts-auto-read"><input id="tts-auto-read" type="checkbox"><span>Automatically read JARVIS replies aloud in text chat</span></label>
         <button id="tts-stop-button" class="voice-setting-button" type="button">Stop speaking</button>
         <p id="tts-status" class="voice-setting-status" role="status" aria-live="polite">Use the speaker button on a reply, or enable automatic reading.</p>
       </section>
@@ -147,7 +147,7 @@
         <div class="api-key-heading"><strong id="gemini-key-title">Gemini API key</strong><small>Required for AI chat replies</small></div>
         <label class="api-key-label" for="gemini-api-key">Google AI Studio key</label>
         <input id="gemini-api-key" class="api-key-input" type="password" inputmode="text" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="100" aria-describedby="gemini-key-privacy gemini-key-status" placeholder="Paste your Gemini API key">
-        <p id="gemini-key-privacy" class="api-key-help">Saved only in this browser or device. When you ask KALKI for an AI reply, the key is sent directly from this page to Google’s Gemini API over HTTPS. It is not stored on KALKI’s server. Anyone with access to this browser profile may be able to access browser-local data.</p>
+        <p id="gemini-key-privacy" class="api-key-help">Saved only in this browser or device. When you ask JARVIS for an AI reply, the key is sent directly from this page to Google’s Gemini API over HTTPS. It is not stored on JARVIS’s server. Anyone with access to this browser profile may be able to access browser-local data.</p>
         <p id="gemini-key-status" class="api-key-status" role="status" aria-live="polite">No key saved on this device.</p>
         <div class="api-key-actions"><button id="save-api-key" type="button" class="api-key-save">Save key on this device</button><button id="clear-api-key" type="button" class="api-key-clear">Clear saved key</button></div>
         <a class="api-key-link" href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer">Get a Gemini API key from Google AI Studio ↗</a>
@@ -286,7 +286,7 @@
     document.getElementById('tools-menu-link')?.addEventListener('click', () => toggleMenu(false));
     creatorForm?.addEventListener('submit', (event) => { event.preventDefault(); const topic=document.getElementById('creator-topic').value.trim(); if(!topic)return; const lang=document.getElementById('creator-language').value, length=document.getElementById('creator-length').value, style=document.getElementById('creator-style').value, audience=document.getElementById('creator-audience').value||'Telugu viewers'; const esc=(v)=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[c])); const cards=[['Hook + script plan',`${lang} hook: “${esc(topic)} గురించి 3 quick points — చివరి tip miss అవ్వకండి.”\n\nBeat 1 (0–3s): Curiosity hook\nBeat 2 (3–${length==='30 seconds'?'20':'35'}s): Explain one useful idea with a clear example\nBeat 3: Recap + soft CTA for ${esc(audience)}`],['Metadata',`Title: ${esc(topic)} — Telugu creator short\nDescription: A concise ${esc(lang)} explainer for ${esc(audience)}. Verify every claim before recording.\nTags: ${esc(topic)}, Telugu AI, creator tips, Shorts, ${esc(style)}`],['Assets + voice',`Footage search keywords: ${esc(topic)}, creator desk, abstract technology, phone screen (use only original/licensed/permissioned media).\nVoiceover: ${esc(lang)}, warm and energetic, ${length}.\nSubtitles: burn-in-safe Telugu/Teluglish captions; Music: royalty-free or original only.`],['Thumbnail prompt',`Vertical thumbnail concept: cinematic ${esc(style)} creator setup, bold Telugu headline about “${esc(topic)}”, high contrast, clean subject, no logos or copyrighted characters, 9:16-safe composition.`]]; document.getElementById('creator-output-title').textContent=`${topic} · ${length}`; document.getElementById('creator-cards').replaceChildren(...cards.map(([t,b])=>{const d=document.createElement('article');d.className='creator-card';d.innerHTML=`<h3>${t}</h3><p>${b.replace(/\n/g,'<br>')}</p>`;return d;})); document.getElementById('creator-workflow').textContent=`Brief → ${lang} script + hook → approved/licensed assets → ${esc(style)} edit plan → review-only preview → explicit export approval. Upload/publish remains unavailable.`; creatorOutput.hidden=false; creatorApproval.checked=false; creatorExport.disabled=true; creatorPanel.querySelectorAll('[data-creator-stage]').forEach((x,i)=>x.classList.toggle('is-active',i===5)); });
     creatorApproval?.addEventListener('change',()=>{creatorExport.disabled=!creatorApproval.checked;});
-    creatorExport?.addEventListener('click',()=>{if(!creatorApproval.checked)return; const blob=new Blob([JSON.stringify({type:'KALKI Creator Agent planning package',topic:document.getElementById('creator-topic').value,generatedAt:new Date().toISOString(),status:'planning-only',upload:false,publish:false},null,2)],{type:'application/json'}); const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='kalki-creator-plan.json';a.click();URL.revokeObjectURL(a.href);});
+    creatorExport?.addEventListener('click',()=>{if(!creatorApproval.checked)return; const blob=new Blob([JSON.stringify({type:'JARVIS Creator Agent planning package',topic:document.getElementById('creator-topic').value,generatedAt:new Date().toISOString(),status:'planning-only',upload:false,publish:false},null,2)],{type:'application/json'}); const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='kalki-creator-plan.json';a.click();URL.revokeObjectURL(a.href);});
     document.getElementById('creator-reset')?.addEventListener('click',()=>{creatorOutput.hidden=true; creatorForm.reset(); creatorPanel.querySelectorAll('[data-creator-stage]').forEach((x,i)=>x.classList.toggle('is-active',i===0));});
 
     const toolsSection = document.getElementById('everyday-tools');

@@ -1,4 +1,4 @@
-/* KALKI Advanced Intelligence — provider-neutral client boundary.
+/* JARVIS Advanced Intelligence — provider-neutral client boundary.
  * No secrets, autonomous actions, or permission grants live in this file.
  */
 (() => {
@@ -6,11 +6,11 @@
   const status = { microphone: false, camera: false, screenCapture: false, execution: 'idle' };
   const panel = document.createElement('section');
   panel.className = 'advanced-intelligence-panel';
-  panel.setAttribute('aria-label', 'KALKI Advanced Intelligence');
-  panel.innerHTML = `<div class="ai-panel-head"><div><span class="eyebrow">KALKI ADVANCED</span><strong>Local intelligence controls</strong><small>Consent-first · no background capture · no secrets in the app</small></div><button type="button" class="ai-collapse" aria-expanded="true">−</button></div>
+  panel.setAttribute('aria-label', 'JARVIS Advanced Intelligence');
+  panel.innerHTML = `<div class="ai-panel-head"><div><span class="eyebrow">JARVIS ADVANCED</span><strong>Local intelligence controls</strong><small>Consent-first · no background capture · no secrets in the app</small></div><button type="button" class="ai-collapse" aria-expanded="true">−</button></div>
     <div class="ai-panel-body"><div class="ai-status-grid" id="ai-status-grid"></div><div class="ai-actions">
       <button type="button" data-ai-action="screen">▣ Request screen consent</button><button type="button" data-ai-action="camera">◉ Request camera consent</button><button type="button" data-ai-action="file">＋ Choose PDF/source/image</button>
-    </div><div class="ai-plan"><label for="ai-plan-input">Plan preview (approval required)</label><textarea id="ai-plan-input" rows="2" placeholder="Describe a multi-step task; KALKI will only prepare a plan."></textarea><button type="button" data-ai-action="plan">Prepare safe plan</button></div><p class="ai-unavailable">Live voice, Gemini Live/OpenRouter, vision processing, and system controls require a configured server/native capability. Unavailable capabilities stay disabled.</p></div>`;
+    </div><div class="ai-plan"><label for="ai-plan-input">Plan preview (approval required)</label><textarea id="ai-plan-input" rows="2" placeholder="Describe a multi-step task; JARVIS will only prepare a plan."></textarea><button type="button" data-ai-action="plan">Prepare safe plan</button></div><p class="ai-unavailable">Live voice, Gemini Live/OpenRouter, vision processing, and system controls require a configured server/native capability. Unavailable capabilities stay disabled.</p></div>`;
   const host = document.getElementById('tools-panel-host');
   if (host) host.appendChild(panel);
   const grid = panel.querySelector('#ai-status-grid');

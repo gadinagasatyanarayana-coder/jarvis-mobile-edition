@@ -1,4 +1,4 @@
-/* KALKI motion layer: lightweight CSS adaptations inspired by Libraries.dev effects.
+/* JARVIS motion layer: lightweight CSS adaptations inspired by Libraries.dev effects.
    Keep the app dependency-free and friendly to reduced-motion settings. */
 :root {
   --kalki-motion-ease: cubic-bezier(.2,.75,.25,1);

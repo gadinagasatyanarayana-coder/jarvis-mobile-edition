@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
         message.className = type === "user" ? "msg user" : "msg";
 
         const senderElement = document.createElement("strong");
-        const displaySender = sender === "J.A.R.V.I.S" ? "KALKI" : sender;
+        const displaySender = sender === "J.A.R.V.I.S" ? "JARVIS" : sender;
         senderElement.textContent = `${displaySender}: `;
 
         message.appendChild(senderElement);
@@ -156,8 +156,8 @@ document.addEventListener("DOMContentLoaded", () => {
         ]);
         memory.forEach((item) => {
             if (transientStatus.has(String(item.text || "").trim())) return;
-            const sender = item.sender === "J.A.R.V.I.S" ? "KALKI" : item.sender;
-            showMessage(sender || "KALKI", item.text || "", item.type || "ai", false);
+            const sender = item.sender === "J.A.R.V.I.S" ? "JARVIS" : item.sender;
+            showMessage(sender || "JARVIS", item.text || "", item.type || "ai", false);
         });
     }
 
@@ -450,7 +450,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
         if (!window.isSecureContext) {
-            setDesktopAgentStatus("Open KALKI over HTTPS on the same computer as the agent.", "error");
+            setDesktopAgentStatus("Open JARVIS over HTTPS on the same computer as the agent.", "error");
             return;
         }
         setDesktopAgentStatus("Connecting to the local desktop agent…");
@@ -525,7 +525,7 @@ document.addEventListener("DOMContentLoaded", () => {
         card.className = "msg desktop-action-card";
         card.dataset.desktopState = "pending";
         const title = document.createElement("strong");
-        title.textContent = "KALKI desktop action";
+        title.textContent = "JARVIS desktop action";
         const copy = document.createElement("p");
         copy.textContent = `Open ${action.label} on the paired computer?`;
         const status = document.createElement("p");
@@ -589,7 +589,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const spokenControl = normalizeVoiceStopPhrase(userText);
         if (voiceConversationActive && VOICE_STOP_PHRASES.has(spokenControl)) {
             stopVoiceConversation(true);
-            showMessage("KALKI", "Voice conversation stopped.", "ai");
+            showMessage("JARVIS", "Voice conversation stopped.", "ai");
             if (!ttsAutoRead?.checked) speak("Voice conversation stopped.");
             return;
         }
@@ -597,7 +597,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (desktopAction) {
             showDesktopApprovalCard(desktopAction);
             if (voiceConversationActive) {
-                showMessage("KALKI", "I paused voice listening. Please approve this desktop action on screen before it opens.", "ai");
+                showMessage("JARVIS", "I paused voice listening. Please approve this desktop action on screen before it opens.", "ai");
                 stopVoiceConversation(true, "Waiting for your on-screen approval.");
             }
             return;
@@ -608,10 +608,10 @@ document.addEventListener("DOMContentLoaded", () => {
             if (requestedSkill === "whatsapp" && handleLocalCommand(commandText)) return;
             try {
                 const result = await sendBackendCommand(commandText);
-                showMessage("KALKI", result.message || "Command received.", "ai");
+                showMessage("JARVIS", result.message || "Command received.", "ai");
                 if (result.url && result.executed && (result.tool === "openYouTube" || result.tool === "openGoogle" || result.tool === "youtubeSearch" || result.tool === "wikipedia")) window.open(result.url, "_blank", "noopener");
                 if (result.notify && result.seconds) {
-                    window.setTimeout(() => { const text = "⏰ Timer complete!"; showMessage("KALKI", text, "ai"); if (!ttsAutoRead?.checked && !voiceConversationActive) speak(text); if (window.Notification && Notification.permission === "granted") new Notification("KALKI", { body: text }); }, result.seconds * 1000);
+                    window.setTimeout(() => { const text = "⏰ Timer complete!"; showMessage("JARVIS", text, "ai"); if (!ttsAutoRead?.checked && !voiceConversationActive) speak(text); if (window.Notification && Notification.permission === "granted") new Notification("JARVIS", { body: text }); }, result.seconds * 1000);
                     if (window.Notification && Notification.permission === "default") Notification.requestPermission().catch(() => {});
                 } else if (result.speak && !ttsAutoRead?.checked && !voiceConversationActive) speak(result.message || "Done");
             } catch (error) {
@@ -628,7 +628,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
         if (!getApiKey()) {
-            showMessage("KALKI", "I need your Gemini API key before I can generate an AI reply. Settings is open so you can add it locally; no request was sent to Google.", "ai");
+            showMessage("JARVIS", "I need your Gemini API key before I can generate an AI reply. Settings is open so you can add it locally; no request was sent to Google.", "ai");
             openApiKeySettings();
             if (voiceConversationActive) stopVoiceConversation(true, "Voice chat paused. Add your AI key in Settings to continue.");
             else finishVoiceTurn();
@@ -641,9 +641,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         try {
             const interaction = await analyzeInteraction(userText);
-            if (interaction?.clarification?.question) { showMessage("KALKI", interaction.clarification.question, "ai"); return; }
+            if (interaction?.clarification?.question) { showMessage("JARVIS", interaction.clarification.question, "ai"); return; }
             const reply = await askGemini(interaction);
-            showMessage("KALKI", reply, "ai");
+            showMessage("JARVIS", reply, "ai");
         } catch (error) {
             console.error("JARVIS AI Error:", error);
             showMessage("SYSTEM", error.message, "ai");
@@ -803,7 +803,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!messageInput || !voiceConversationActive) return;
             messageInput.value = text;
             voiceTurnPending = true;
-            setVoiceModeStatus("Heard you. KALKI is thinking…", true);
+            setVoiceModeStatus("Heard you. JARVIS is thinking…", true);
             sendMessage();
         };
 
@@ -831,7 +831,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         document.addEventListener("visibilitychange", () => {
             if (document.hidden && voiceConversationActive) {
-                stopVoiceConversation(false, "Voice chat stopped because KALKI is in the background.");
+                stopVoiceConversation(false, "Voice chat stopped because JARVIS is in the background.");
             }
         });
         window.addEventListener("pagehide", () => {
@@ -854,7 +854,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const subject = shared.title ? `\nTitle: ${shared.title}` : "";
             const body = shared.text ? `\nContent: ${shared.text}` : "\nContent: Shared file content is available for review in the originating app.";
             if (messageInput) { messageInput.value = `${action} this shared content.${subject}${body}\n\n[Draft — review and press Send to approve]`; messageInput.focus(); }
-            showMessage("KALKI", `${action} draft prepared. Review it in the composer; no action was sent or executed.`, "ai");
+            showMessage("JARVIS", `${action} draft prepared. Review it in the composer; no action was sent or executed.`, "ai");
         }));
         window.addEventListener("kalki-share", (event) => {
             shared = event.detail || {};
@@ -910,7 +910,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ttsVoiceSelect.replaceChildren(...options);
         if (saved === "auto") {
             ttsVoiceSelect.value = "auto";
-            if (ttsVoiceHelp) ttsVoiceHelp.textContent = "KALKI will follow the browser’s language-based voice choice.";
+            if (ttsVoiceHelp) ttsVoiceHelp.textContent = "JARVIS will follow the browser’s language-based voice choice.";
             return;
         }
 
@@ -923,10 +923,10 @@ document.addEventListener("DOMContentLoaded", () => {
         if (chosen) {
             ttsVoiceSelect.value = voiceOptionValue(chosen);
             try { localStorage.setItem(TTS_VOICE_KEY, ttsVoiceSelect.value); } catch (_) { /* Keep this choice for this page only. */ }
-            if (ttsVoiceHelp) ttsVoiceHelp.textContent = `KALKI will keep using ${chosen.name} (${chosen.lang}) on this device. Choose a Telugu voice if available for Telugu pronunciation.`;
+            if (ttsVoiceHelp) ttsVoiceHelp.textContent = `JARVIS will keep using ${chosen.name} (${chosen.lang}) on this device. Choose a Telugu voice if available for Telugu pronunciation.`;
         } else {
             ttsVoiceSelect.value = "auto";
-            if (ttsVoiceHelp) ttsVoiceHelp.textContent = "No device voice list is available yet; KALKI will use your browser’s default voice.";
+            if (ttsVoiceHelp) ttsVoiceHelp.textContent = "No device voice list is available yet; JARVIS will use your browser’s default voice.";
         }
     }
 
@@ -950,8 +950,8 @@ document.addEventListener("DOMContentLoaded", () => {
             try { localStorage.setItem(TTS_VOICE_KEY, ttsVoiceSelect.value); } catch (_) { /* Use this page's selection only. */ }
             const voice = getSelectedTtsVoice(window.speechSynthesis?.getVoices?.() || []);
             if (ttsVoiceHelp) ttsVoiceHelp.textContent = voice
-                ? `KALKI will keep using ${voice.name} (${voice.lang}) on this device.`
-                : "KALKI will follow the browser’s language-based voice choice.";
+                ? `JARVIS will keep using ${voice.name} (${voice.lang}) on this device.`
+                : "JARVIS will follow the browser’s language-based voice choice.";
         });
         if ("speechSynthesis" in window) {
             populateTtsVoiceOptions();

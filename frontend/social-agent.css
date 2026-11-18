@@ -1,4 +1,4 @@
-/* KALKI Social Automation Agent — local-only builder and preview workspace. */
+/* JARVIS Social Automation Agent — local-only builder and preview workspace. */
 .social-agent-panel[hidden]{display:none!important}
 .social-agent-panel{max-width:760px;margin:0 auto;padding:14px 0 125px;color:var(--text,#f1f3f7)}
 .social-head,.social-card,.social-metrics,.social-preview,.social-audit{border:1px solid rgba(176,164,255,.25);border-radius:16px;background:linear-gradient(145deg,rgba(25,29,42,.94),rgba(13,16,24,.95));box-shadow:0 12px 32px #0003}
