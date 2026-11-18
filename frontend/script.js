@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let activeUtterance = null;
     let activeSpeakButton = null;
     let voiceConversationActive = false;
+    let wakeWordEnabled = false;
     let voiceTurnPending = false;
     let recognitionStarting = false;
     let voiceRestartTimer = null;
@@ -80,11 +81,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Fallback models: first one busy ayithe next model try avutundi
     const MODEL_NAMES = [
-        "gemini-3.6-flash",
+        "gemini-3.8-flash",
+        "gemini-3.5-flash-lite",
         "gemini-3.5-flash",
         "gemini-3.1-flash-lite"
     ];
-
     let recognition = null;
     let isListening = false;
 
@@ -253,7 +254,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     body: JSON.stringify({
                         systemInstruction: {
                             parts: [{
-                                text: `You are KALKI, a warm personal assistant who speaks naturally like a helpful friend, not a robotic list generator. Acknowledge statements, show empathy for emotions, ask at most one relevant follow-up when useful, clarify incomplete requests, and offer one sensible next step. Use Telugu/Teluglish naturally when the user does. Never invent calendar, task, weather, connector, or memory facts. Never claim durable memory beyond the conversation supplied. External actions remain explicit and confirmation-gated; do not send, schedule, or act in the background. ${interaction?.guidance?.tone || "Match the user’s language naturally."} ${interaction?.guidance?.style === "detailed" ? "Give a helpful explanation." : "Prefer concise, human replies."} Recent-context available: ${Boolean(interaction?.signals?.continuityAvailable)}.`
+                                text: `You are Jarvis, a warm personal assistant who speaks naturally like a helpful friend, not a robotic list generator. Acknowledge statements, show empathy for emotions, ask at most one relevant follow-up when useful, clarify incomplete requests, and offer one sensible next step. Use Telugu/Teluglish naturally when the user does. Never invent calendar, task, weather, connector, or memory facts. Never claim durable memory beyond the conversation supplied. External actions remain explicit and confirmation-gated; do not send, schedule, or act in the background. ${interaction?.guidance?.tone || "Match the user’s language naturally."} ${interaction?.guidance?.style === "detailed" ? "Give a helpful explanation." : "Prefer concise, human replies."} Recent-context available: ${Boolean(interaction?.signals?.continuityAvailable)}.`
                             }]
                         },
                         contents
@@ -689,12 +690,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function scheduleVoiceListening(delay = 500) {
         window.clearTimeout(voiceRestartTimer);
-        if (!voiceConversationActive || voiceTurnPending || document.hidden) return;
+        if ((!voiceConversationActive && !wakeWordEnabled) || voiceTurnPending || document.hidden) return;
         voiceRestartTimer = window.setTimeout(beginVoiceListening, delay);
     }
 
     function beginVoiceListening() {
-        if (!voiceConversationActive || !recognition || isListening || recognitionStarting || voiceTurnPending || document.hidden) return;
+        if ((!voiceConversationActive && !wakeWordEnabled) || !recognition || isListening || recognitionStarting || voiceTurnPending || document.hidden) return;
         if (window.speechSynthesis?.speaking || window.speechSynthesis?.pending) {
             scheduleVoiceListening(450);
             return;
@@ -727,7 +728,7 @@ document.addEventListener("DOMContentLoaded", () => {
         voiceTurnPending = false;
         if ("speechSynthesis" in window && "SpeechSynthesisUtterance" in window) {
             setVoiceModeStatus("Voice chat is on. Listening after the greeting…", true);
-            speak("Hi, I’m KALKI. I’m listening.", null);
+            speak("Hello, I am Jarvis. I am listening.", null);
         } else {
             setVoiceModeStatus("Voice chat is on. Speak after the microphone starts.", true);
             beginVoiceListening();
@@ -748,8 +749,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function toggleVoice() {
-        if (voiceConversationActive) stopVoiceConversation();
-        else startVoiceConversation();
+        if (voiceConversationActive || wakeWordEnabled) {
+            wakeWordEnabled = false;
+            stopVoiceConversation();
+            return;
+        }
+        wakeWordEnabled = true;
+        setVoiceModeStatus("Say Jarvis to wake me up.", true);
+        scheduleVoiceListening(300);
     }
 
     function setupVoice() {
@@ -767,7 +774,7 @@ document.addEventListener("DOMContentLoaded", () => {
         recognition.onstart = () => {
             recognitionStarting = false;
             isListening = true;
-            if (!voiceConversationActive) {
+            if (!voiceConversationActive && !wakeWordEnabled) {
                 try { recognition.stop(); } catch (_) { /* Stop a late start after the user has exited voice mode. */ }
                 return;
             }
@@ -779,7 +786,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 .filter((result) => result.isFinal)
                 .map((result) => result[0]?.transcript || "")
                 .join(" ").trim();
-            if (!text || !messageInput || !voiceConversationActive) return;
+            if (!text) return;
+            if (!voiceConversationActive && wakeWordEnabled) {
+                if (text.toLowerCase().includes("jarvis")) {
+                    wakeWordEnabled = false;
+                    voiceConversationActive = true;
+                    try { recognition.stop(); } catch (_) {}
+                    setVoiceModeStatus("Jarvis activated. Listening…", true);
+                    setTimeout(() => {
+                        voiceConversationActive = false;
+                        startVoiceConversation();
+                    }, 700);
+                }
+                return;
+            }
+            if (!messageInput || !voiceConversationActive) return;
             messageInput.value = text;
             voiceTurnPending = true;
             setVoiceModeStatus("Heard you. KALKI is thinking…", true);
@@ -803,7 +824,7 @@ document.addEventListener("DOMContentLoaded", () => {
         recognition.onend = () => {
             recognitionStarting = false;
             isListening = false;
-            if (!voiceConversationActive || voiceTurnPending || window.speechSynthesis?.speaking) return;
+            if ((!voiceConversationActive && !wakeWordEnabled) || voiceTurnPending || window.speechSynthesis?.speaking) return;
             setVoiceModeStatus("Listening again…", true);
             scheduleVoiceListening(500);
         };
